@@ -17,8 +17,41 @@
     --accent:#1F6F5C;
     --accent-soft:#E5F0EC;
     --highlight:#C1571C;
+    --btn-bg:#12151C;
+    --btn-text:#FFFFFF;
+    --side-gradient:linear-gradient(135deg,#FBEEE7,#F6F2FA);
     --radius:2px;
     --maxw:920px;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#10131A;
+      --surface:#171B24;
+      --ink:#E7EAF0;
+      --ink-soft:#9AA3B2;
+      --line:#2B313E;
+      --accent:#54C7A6;
+      --accent-soft:#1B2B27;
+      --highlight:#E0834F;
+      --btn-bg:#E7EAF0;
+      --btn-text:#10131A;
+      --side-gradient:linear-gradient(135deg,#241B22,#1B2130);
+    }
+  }
+
+  :root[data-theme="dark"]{
+    --bg:#10131A;
+    --surface:#171B24;
+    --ink:#E7EAF0;
+    --ink-soft:#9AA3B2;
+    --line:#2B313E;
+    --accent:#54C7A6;
+    --accent-soft:#1B2B27;
+    --highlight:#E0834F;
+    --btn-bg:#E7EAF0;
+    --btn-text:#10131A;
+    --side-gradient:linear-gradient(135deg,#241B22,#1B2130);
   }
 
   *{box-sizing:border-box;}
@@ -31,6 +64,7 @@
     font-size:16px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    transition:background-color .2s ease, color .2s ease;
   }
   h1,h2,h3{
     font-family:'Space Grotesk', sans-serif;
@@ -51,9 +85,22 @@
   }
   .nav .id{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;}
   .nav .id span{color:var(--accent);}
+  .nav-right{display:flex; align-items:center; gap:24px;}
   .nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
   .nav a{color:var(--ink-soft); text-decoration:none; font-size:14px;}
   .nav a:hover{color:var(--accent);}
+
+  .theme-toggle{
+    width:34px; height:34px; flex:none; border:1px solid var(--line); border-radius:50%;
+    background:var(--surface); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:var(--ink-soft); padding:0;
+    transition:background-color .2s ease, border-color .15s ease, color .15s ease;
+  }
+  .theme-toggle:hover{border-color:var(--accent); color:var(--accent);}
+  .theme-toggle svg{width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+  .theme-toggle .icon-sun{display:none;}
+  :root[data-theme="dark"] .theme-toggle .icon-moon{display:none;}
+  :root[data-theme="dark"] .theme-toggle .icon-sun{display:block;}
 
   /* ---- Hero ---- */
   .hero{padding:64px 0 80px;}
@@ -74,10 +121,10 @@
     display:inline-block; padding:11px 20px; font-size:14px; font-weight:500;
     border-radius:var(--radius); text-decoration:none; border:1px solid var(--ink);
     color:var(--ink); font-family:'IBM Plex Sans',sans-serif;
-    transition:background .15s ease, color .15s ease;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
-  .btn.primary{background:var(--ink); color:#fff;}
-  .btn.primary:hover{background:var(--accent); border-color:var(--accent);}
+  .btn.primary{background:var(--btn-bg); color:var(--btn-text); border-color:var(--btn-bg);}
+  .btn.primary:hover{background:var(--accent); border-color:var(--accent); color:#fff;}
   .btn:not(.primary):hover{background:var(--surface); border-color:var(--accent); color:var(--accent);}
 
   /* schematic diagram */
@@ -113,6 +160,7 @@
       linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size:22px 22px; background-position:-1px -1px;
     display:flex; align-items:center; justify-content:center;
+    transition:background-color .2s ease, border-color .2s ease;
   }
   .visual::before, .visual::after{
     content:""; position:absolute; width:10px; height:10px; border:1.5px solid var(--ink-soft);
@@ -142,8 +190,9 @@
     display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
     background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
     padding:32px;
+    transition:background-color .2s ease, border-color .2s ease;
   }
-  .side-project .visual{background:linear-gradient(135deg,#FBEEE7,#F6F2FA); border-style:dashed;}
+  .side-project .visual{background:var(--side-gradient); border-style:dashed;}
 
   /* ---- Certifications ---- */
   .cert-group{margin-bottom:44px;}
@@ -157,8 +206,8 @@
   .cert-lead p{color:var(--ink-soft); font-size:14.5px; margin:0 0 10px;}
   .cert-lead .kicker{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); display:block; margin-bottom:8px;}
   .cert-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px;}
-  .cert-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface);}
-  .cert-card img{width:100%; aspect-ratio:16/10.5; object-fit:cover; display:block; border-bottom:1px solid var(--line);}
+  .cert-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface); transition:background-color .2s ease, border-color .2s ease;}
+  .cert-card img{width:100%; aspect-ratio:16/10.5; object-fit:cover; display:block; border-bottom:1px solid var(--line); background:#fff;}
   .cert-card .meta{padding:12px 14px;}
   .cert-card .meta h4{font-size:13.5px; font-weight:500; margin:0 0 6px; line-height:1.4;}
   .cert-card .meta .date{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);}
@@ -194,6 +243,7 @@
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
+    body, .visual, .side-project, .cert-card, .btn, .theme-toggle{transition:none;}
   }
 </style>
 </head>
@@ -201,13 +251,22 @@
 
   <nav class="nav">
     <div class="id">Renz Amorganda <span></span></div>
-    <ul>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#building">Building</a></li>
-      <li><a href="#certs">Certs</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#building">Building</a></li>
+        <li><a href="#certs">Certs</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/>
+        </svg>
+      </button>
+    </div>
   </nav>
 
   <header class="hero wrap">
@@ -446,22 +505,22 @@
           <span class="kicker mono" style="color:var(--accent); font-size:12px;">Tools &amp; skills</span>
           <div class="skills">
             <span>Java / Android Studio</span>
-<span>Firebase / Firestore</span>
-<span>Python</span>
-<span>TensorFlow Lite</span>
-<span>HTML / CSS / JavaScript</span>
-<span>MySQL / SQL</span>
-<span>Git / GitHub</span>
-<span>UML / draw.io</span>
-<span>Agile / Scrum</span>
-<span>Ren'Py</span>
-<span>Roblox Studio / Lua</span>
-<span>ESP32 / Arduino</span>
-<span>Canva</span>
-<span>Figma / UI Prototyping</span>
-<span>DaVinci Resolve</span>
-<span>Visual Studio</span>
-<span>Microsoft Office</span>
+            <span>Firebase / Firestore</span>
+            <span>Python</span>
+            <span>TensorFlow Lite</span>
+            <span>HTML / CSS / JavaScript</span>
+            <span>MySQL / SQL</span>
+            <span>Git / GitHub</span>
+            <span>UML / draw.io</span>
+            <span>Agile / Scrum</span>
+            <span>Ren'Py</span>
+            <span>Roblox Studio / Lua</span>
+            <span>ESP32 / Arduino</span>
+            <span>Canva</span>
+            <span>Figma / UI Prototyping</span>
+            <span>DaVinci Resolve</span>
+            <span>Visual Studio</span>
+            <span>Microsoft Office</span>
           </div>
         </div>
       </div>
@@ -472,9 +531,27 @@
   <footer class="wrap" id="contact">
     <span class="mono">Renz Amorganda</span>
     <div class="contact">
-      <a href="mailto:youremail@example.com">blacklayeryt@gmail.com</a>
+      <a href="mailto:blacklayeryt@gmail.com">blacklayeryt@gmail.com</a>
     </div>
   </footer>
+
+  <script>
+  (function(){
+    var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+    var stored = null;
+    try{ stored = localStorage.getItem('theme'); }catch(e){}
+    if(stored === 'dark' || stored === 'light'){
+      root.setAttribute('data-theme', stored);
+    }
+    toggle.addEventListener('click', function(){
+      var isDark = getComputedStyle(root).getPropertyValue('--bg').trim().toLowerCase() === '#10131a';
+      var next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try{ localStorage.setItem('theme', next); }catch(e){}
+    });
+  })();
+  </script>
 
 </body>
 </html>
