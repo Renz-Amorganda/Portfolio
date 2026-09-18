@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Renz Amorganda — SMUUGY</title>
+<title>Renz Amorganda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -145,6 +145,25 @@
   }
   .side-project .visual{background:linear-gradient(135deg,#FBEEE7,#F6F2FA); border-style:dashed;}
 
+  /* ---- Certifications ---- */
+  .cert-group{margin-bottom:44px;}
+  .cert-group:last-child{margin-bottom:0;}
+  .cert-lead{
+    display:grid; grid-template-columns:180px 1fr; gap:28px; align-items:center;
+    padding-bottom:26px; margin-bottom:26px; border-bottom:1px solid var(--line);
+  }
+  .cert-lead img{width:100%; display:block; border:1px solid var(--line); border-radius:var(--radius);}
+  .cert-lead h3{font-size:19px; margin-bottom:6px;}
+  .cert-lead p{color:var(--ink-soft); font-size:14.5px; margin:0 0 10px;}
+  .cert-lead .kicker{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); display:block; margin-bottom:8px;}
+  .cert-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px;}
+  .cert-card{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface);}
+  .cert-card img{width:100%; aspect-ratio:16/10.5; object-fit:cover; display:block; border-bottom:1px solid var(--line);}
+  .cert-card .meta{padding:12px 14px;}
+  .cert-card .meta h4{font-size:13.5px; font-weight:500; margin:0 0 6px; line-height:1.4;}
+  .cert-card .meta .date{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);}
+  .cert-card .meta .visit{font-size:12px; margin-top:8px; display:inline-block;}
+
   /* ---- About ---- */
   .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
   .about-grid p{color:var(--ink-soft); font-size:15px;}
@@ -170,6 +189,7 @@
     .project .visual, .project.reverse .visual{order:1;}
     .project .info, .project.reverse .info{order:2;}
     .about-grid{grid-template-columns:1fr;}
+    .cert-lead{grid-template-columns:1fr;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -180,10 +200,11 @@
 <body>
 
   <nav class="nav">
-    <div class="id">Renz Amorganda <span></span></div>
+    <div class="id">Renz Amorganda <span>/ SMUUGY</span></div>
     <ul>
       <li><a href="#work">Work</a></li>
       <li><a href="#building">Building</a></li>
+      <li><a href="#certs">Certs</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -308,6 +329,105 @@
       </div>
     </section>
 
+    <section id="certs">
+      <div class="section-head">
+        <h2>Certifications</h2>
+        <span class="tag mono">Google · Coursera</span>
+      </div>
+
+      <div class="cert-group">
+        <div class="cert-lead">
+          <img src="Z7W14VV5978K.jpg" alt="Google Agile Essentials specialization certificate">
+          <div>
+            <span class="kicker">Specialization · 3 courses · Jul 26, 2026</span>
+            <h3>Google Agile Essentials</h3>
+            <p>Building Scrum artifacts, sprint estimation, sprint planning, and running retrospectives.</p>
+            <a class="visit" href="https://coursera.org/verify/specialization/Z7W14VV5978K" target="_blank" rel="noopener">Verify specialization →</a>
+          </div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_197R1DYPLHF1.jpeg" alt="Foundations of Agile Project Management certificate">
+            <div class="meta">
+              <h4>Foundations of Agile Project Management</h4>
+              <span class="date">Jul 17, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/197R1DYPLHF1" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_KDXV8UU3EPE3.jpeg" alt="Implement the Scrum Framework certificate">
+            <div class="meta">
+              <h4>Implement the Scrum Framework</h4>
+              <span class="date">Jul 19, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/KDXV8UU3EPE3" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_YQ8AMAJXS5HC.jpeg" alt="Organize Projects and Measure Productivity with Scrum certificate">
+            <div class="meta">
+              <h4>Organize Projects and Measure Productivity with Scrum</h4>
+              <span class="date">Jul 26, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/YQ8AMAJXS5HC" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-group">
+        <div class="cert-lead">
+          <img src="BXC2X7SZRAIO.jpg" alt="Google AI Essentials specialization certificate">
+          <div>
+            <span class="kicker">Specialization · 5 courses · Sep 16, 2026</span>
+            <h3>Google AI Essentials</h3>
+            <p>Hands-on practice with AI tools — prompting, responsible use, and building AI into a daily workflow.</p>
+            <a class="visit" href="https://coursera.org/verify/specialization/BXC2X7SZRAIO" target="_blank" rel="noopener">Verify specialization →</a>
+          </div>
+        </div>
+        <div class="cert-row">
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_RDGVHQD0MMVD.jpeg" alt="Introduction to AI certificate">
+            <div class="meta">
+              <h4>Introduction to AI</h4>
+              <span class="date">Aug 7, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/RDGVHQD0MMVD" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_QCB71YFZMBGZ.jpeg" alt="Maximize Productivity With AI Tools certificate">
+            <div class="meta">
+              <h4>Maximize Productivity With AI Tools</h4>
+              <span class="date">Sep 8, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/QCB71YFZMBGZ" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_F5D8V6MSMBTW.jpeg" alt="Discover the Art of Prompting certificate">
+            <div class="meta">
+              <h4>Discover the Art of Prompting</h4>
+              <span class="date">Sep 16, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/F5D8V6MSMBTW" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_X4MSFP74MFC0.jpeg" alt="Use AI Responsibly certificate">
+            <div class="meta">
+              <h4>Use AI Responsibly</h4>
+              <span class="date">Sep 17, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/X4MSFP74MFC0" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+          <div class="cert-card">
+            <img src="CERTIFICATE_LANDING_PAGE_4XT4GHO3Q0AT.jpeg" alt="Stay Ahead of the AI Curve certificate">
+            <div class="meta">
+              <h4>Stay Ahead of the AI Curve</h4>
+              <span class="date">Sep 16, 2026</span><br>
+              <a class="visit" href="https://coursera.org/verify/4XT4GHO3Q0AT" target="_blank" rel="noopener">Verify →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="about">
       <div class="section-head">
         <h2>About</h2>
@@ -315,7 +435,7 @@
       </div>
       <div class="about-grid">
         <div>
-          <p>I'm an IT student focused on systems analysis and mobile development — the part of software where
+          <p>I'm an IT/CS student focused on systems analysis and mobile development — the part of software where
             you have to understand how a business actually runs before you write a line of code. Most of my
             coursework and side projects follow the same loop: map the process, design the system, then build
             something people who aren't developers can use.</p>
@@ -326,22 +446,13 @@
           <span class="kicker mono" style="color:var(--accent); font-size:12px;">Tools &amp; skills</span>
           <div class="skills">
             <span>Java / Android Studio</span>
-<span>Firebase / Firestore</span>
-<span>Python</span>
-<span>TensorFlow Lite</span>
-<span>HTML / CSS / JavaScript</span>
-<span>MySQL / SQL</span>
-<span>Git / GitHub</span>
-<span>UML / draw.io</span>
-<span>Agile / Scrum</span>
-<span>Ren'Py</span>
-<span>Roblox Studio / Lua</span>
-<span>ESP32 / Arduino</span>
-<span>Canva</span>
-<span>Figma / UI Prototyping</span>
-<span>DaVinci Resolve</span>
-<span>Visual Studio</span>
-<span>Microsoft Office</span>
+            <span>Firebase</span>
+            <span>Python</span>
+            <span>TensorFlow Lite</span>
+            <span>draw.io / UML</span>
+            <span>HTML / CSS / JS</span>
+            <span>Ren'Py</span>
+            <span>DaVinci Resolve</span>
           </div>
         </div>
       </div>
@@ -350,9 +461,9 @@
   </main>
 
   <footer class="wrap" id="contact">
-    <span class="mono">Renz Amorganda — SMUUGY</span>
+    <span class="mono">Renz Amorganda </span>
     <div class="contact">
-      <a href="mailto:youremail@example.com">youremail@example.com</a>
+      <a href="mailto:youremail@example.com">blacklayeryt@gmail.com</a>
     </div>
   </footer>
 
