@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renz Amorganda — SMUUGY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F6F8;
+    --surface:#FFFFFF;
+    --ink:#12151C;
+    --ink-soft:#565F6E;
+    --line:#DCE1E7;
+    --accent:#1F6F5C;
+    --accent-soft:#E5F0EC;
+    --highlight:#C1571C;
+    --radius:2px;
+    --maxw:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:var(--accent);}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* ---- Nav ---- */
+  .nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 28px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .nav .id{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;}
+  .nav .id span{color:var(--accent);}
+  .nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  .nav a{color:var(--ink-soft); text-decoration:none; font-size:14px;}
+  .nav a:hover{color:var(--accent);}
+
+  /* ---- Hero ---- */
+  .hero{padding:64px 0 80px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:center;
+  }
+  .hero h1{font-size:44px; line-height:1.12; max-width:11ch;}
+  .hero .role{
+    display:inline-block; margin-bottom:18px;
+    font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent);
+    padding:4px 10px; border:1px solid var(--accent); border-radius:20px;
+  }
+  .hero p.lede{
+    margin-top:20px; color:var(--ink-soft); font-size:17px; max-width:46ch;
+  }
+  .hero .links{margin-top:28px; display:flex; gap:14px;}
+  .btn{
+    display:inline-block; padding:11px 20px; font-size:14px; font-weight:500;
+    border-radius:var(--radius); text-decoration:none; border:1px solid var(--ink);
+    color:var(--ink); font-family:'IBM Plex Sans',sans-serif;
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn.primary{background:var(--ink); color:#fff;}
+  .btn.primary:hover{background:var(--accent); border-color:var(--accent);}
+  .btn:not(.primary):hover{background:var(--surface); border-color:var(--accent); color:var(--accent);}
+
+  /* schematic diagram */
+  .schematic{width:100%; height:auto;}
+  .schematic .node circle{fill:var(--surface); stroke:var(--accent); stroke-width:1.5;}
+  .schematic .node text{font-family:'IBM Plex Mono',monospace; font-size:11px; fill:var(--ink-soft);}
+  .schematic line{stroke:var(--line); stroke-width:1.5;}
+  .schematic .pulse{stroke:var(--accent); stroke-width:1.5; stroke-dasharray:4 5;}
+
+  /* ---- Section shell ---- */
+  section{padding:56px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:36px;
+    border-bottom:1px solid var(--line); padding-bottom:14px;
+  }
+  .section-head h2{font-size:22px;}
+  .section-head .tag{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);}
+
+  /* ---- Project rows ---- */
+  .project{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
+    padding:36px 0; border-bottom:1px solid var(--line);
+  }
+  .project:last-child{border-bottom:none;}
+  .project.reverse .visual{order:2;}
+  .project.reverse .info{order:1;}
+
+  .visual{
+    aspect-ratio:16/10; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--radius); position:relative; overflow:hidden;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:22px 22px; background-position:-1px -1px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .visual::before, .visual::after{
+    content:""; position:absolute; width:10px; height:10px; border:1.5px solid var(--ink-soft);
+    opacity:.45;
+  }
+  .visual::before{top:8px; left:8px; border-right:none; border-bottom:none;}
+  .visual::after{bottom:8px; right:8px; border-left:none; border-top:none;}
+  .visual .hint{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);
+    background:var(--bg); padding:6px 12px; border:1px dashed var(--line); text-align:center;
+    max-width:80%;
+  }
+
+  .info .kicker{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); display:block; margin-bottom:8px;}
+  .info h3{font-size:21px; margin-bottom:10px;}
+  .info p{color:var(--ink-soft); font-size:15px; margin:0 0 16px;}
+  .stack{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;}
+  .stack span{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--ink-soft);
+    background:var(--accent-soft); padding:3px 9px; border-radius:20px;
+  }
+  .info .visit{font-size:14px; font-weight:500; text-decoration:none;}
+  .info .visit:hover{text-decoration:underline;}
+
+  /* personal project card, distinct treatment */
+  .side-project{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px;
+  }
+  .side-project .visual{background:linear-gradient(135deg,#FBEEE7,#F6F2FA); border-style:dashed;}
+
+  /* ---- About ---- */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .about-grid p{color:var(--ink-soft); font-size:15px;}
+  .skills{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .skills span{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; padding:5px 10px;
+    border:1px solid var(--line); border-radius:20px; color:var(--ink);
+  }
+
+  footer{
+    padding:40px 0 60px; border-top:1px solid var(--line); margin-top:20px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  footer .mono{color:var(--ink-soft); font-size:13px;}
+  footer .contact a{color:var(--ink); text-decoration:none; font-weight:500;}
+  footer .contact a:hover{color:var(--accent);}
+
+  @media (max-width:760px){
+    .nav ul{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:34px;}
+    .project, .project.reverse, .side-project{grid-template-columns:1fr;}
+    .project .visual, .project.reverse .visual{order:1;}
+    .project .info, .project.reverse .info{order:2;}
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="id">Renz Amorganda <span></span></div>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#building">Building</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="role">IT student · systems &amp; mobile dev</span>
+        <h1>I design and build the systems behind small operations.</h1>
+        <p class="lede">Currently studying IT with a focus on systems analysis. I spend most of my time turning
+          messy manual processes — stock counts, order queues, storefronts — into software that a small team can
+          actually run on.</p>
+        <div class="links">
+          <a href="#work" class="btn primary">See the work</a>
+          <a href="#contact" class="btn">Get in touch</a>
+        </div>
+      </div>
+      <div>
+        <svg class="schematic" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+          <line x1="30" y1="40" x2="90" y2="40" />
+          <line x1="90" y1="40" x2="150" y2="90" />
+          <line x1="150" y1="90" x2="210" y2="40" class="pulse"/>
+          <line x1="90" y1="40" x2="90" y2="120" />
+          <line x1="90" y1="120" x2="180" y2="120" />
+          <g class="node"><circle cx="30" cy="40" r="14"/><text x="30" y="65" text-anchor="middle">plan</text></g>
+          <g class="node"><circle cx="90" cy="40" r="14"/><text x="90" y="65" text-anchor="middle">design</text></g>
+          <g class="node"><circle cx="150" cy="90" r="14"/><text x="150" y="115" text-anchor="middle">build</text></g>
+          <g class="node"><circle cx="210" cy="40" r="14"/><text x="210" y="65" text-anchor="middle">ship</text></g>
+          <g class="node"><circle cx="180" cy="120" r="14"/><text x="180" y="145" text-anchor="middle">support</text></g>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="work">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span class="tag mono">capstone · client sites</span>
+      </div>
+
+      <div class="project">
+        <div class="visual">
+          <div class="hint">Add screenshot here —<br>intellistock-dashboard.png</div>
+        </div>
+        <div class="info">
+          <span class="kicker">Capstone · Team DiReMe</span>
+          <h3>IntelliStock</h3>
+          <p>An Android inventory management system built for Jas Motor Shop. Tracks stock in real time, scans
+            parts in with a barcode reader, and forecasts demand on-device so the shop can reorder before it runs
+            out — without sending any data off the phone.</p>
+          <div class="stack">
+            <span>Android · Java</span>
+            <span>Firebase</span>
+            <span>TensorFlow Lite</span>
+            <span>ZXing</span>
+            <span>MPAndroidChart</span>
+          </div>
+          <p style="margin-bottom:0; font-size:14px;">Forecasting runs on a lightweight linear regression model
+            trained in Python and exported to TFLite — picked over a heavier model to keep inference fast and
+            cheap on a shop's ordinary phone.</p>
+        </div>
+      </div>
+
+      <div class="project reverse">
+        <div class="visual">
+          <div class="hint">Add screenshot here —<br>bakemyday-homepage.png</div>
+        </div>
+        <div class="info">
+          <span class="kicker">Client site</span>
+          <h3>Bake My Day</h3>
+          <p>A general information site built for the business — hours, menu, story, and contact details in one
+            clean, easy-to-update page.</p>
+          <div class="stack">
+            <span>HTML/CSS</span>
+            <span>Client site</span>
+          </div>
+          <a class="visit" href="https://bakemyday.rf.gd" target="_blank" rel="noopener">Visit bakemyday.rf.gd →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="visual">
+          <div class="hint">Add screenshot here —<br>entrepreneurship-kiosk.png</div>
+        </div>
+        <div class="info">
+          <span class="kicker">Client site</span>
+          <h3>Online Kiosk</h3>
+          <p>A self-serve ordering kiosk built for the same business — lets customers browse and order directly
+            from a screen instead of queuing at a counter.</p>
+          <div class="stack">
+            <span>HTML/CSS/JS</span>
+            <span>Kiosk UI</span>
+          </div>
+          <a class="visit" href="https://entrepreneurshiptemporary.rf.gd" target="_blank" rel="noopener">Visit entrepreneurshiptemporary.rf.gd →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="building">
+      <div class="section-head">
+        <h2>Also building</h2>
+        <span class="tag mono">personal project</span>
+      </div>
+      <div class="side-project">
+        <div class="visual">
+          <div class="hint">Add art/screenshot here —<br>meeting-you-title.png</div>
+        </div>
+        <div class="info">
+          <span class="kicker">Ren'Py visual novel</span>
+          <h3>Meeting You</h3>
+          <p>A romance visual novel with a shojo-anime, cherry-blossom look. Outside of coursework, this is where
+            I get to write dialogue, direct scenes, and put together trailer cuts instead of debugging ERDs.</p>
+          <div class="stack">
+            <span>Ren'Py</span>
+            <span>Illustration</span>
+            <span>Video editing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <h2>About</h2>
+        <span class="tag mono">background</span>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>I'm an IT student focused on systems analysis and mobile development — the part of software where
+            you have to understand how a business actually runs before you write a line of code. Most of my
+            coursework and side projects follow the same loop: map the process, design the system, then build
+            something people who aren't developers can use.</p>
+          <p>Outside of that, I split my time between video editing and a visual novel project, which mostly means
+            switching between Android Studio and DaVinci Resolve in the same afternoon.</p>
+        </div>
+        <div>
+          <span class="kicker mono" style="color:var(--accent); font-size:12px;">Tools &amp; skills</span>
+          <div class="skills">
+            <span>Java / Android Studio</span>
+<span>Firebase / Firestore</span>
+<span>Python</span>
+<span>TensorFlow Lite</span>
+<span>HTML / CSS / JavaScript</span>
+<span>MySQL / SQL</span>
+<span>Git / GitHub</span>
+<span>UML / draw.io</span>
+<span>Agile / Scrum</span>
+<span>Ren'Py</span>
+<span>Roblox Studio / Lua</span>
+<span>ESP32 / Arduino</span>
+<span>Canva</span>
+<span>Figma / UI Prototyping</span>
+<span>DaVinci Resolve</span>
+<span>Visual Studio</span>
+<span>Microsoft Office</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="wrap" id="contact">
+    <span class="mono">Renz Amorganda — SMUUGY</span>
+    <div class="contact">
+      <a href="mailto:youremail@example.com">youremail@example.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
